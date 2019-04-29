@@ -6,7 +6,13 @@ public class ExpressionTree{
   /* The sample tree would be: "(3 + (2 * 10))"     */
   public String toString(){
     /*you are to write this method*/
-    return "";
+    String s = "";
+    if (this.isOp()){
+      s += "(" + this.getLeft().toString() + " " + this.getOp() + " " + this.getRight().toString() + ")";
+    } else {
+      s += this.getValue();
+    }
+    return s;
   }
 
   /*return the expression as a postfix notation string without parenthesis*/
@@ -17,7 +23,7 @@ public class ExpressionTree{
       s+= this.getValue();
     }
     if (this.isOp()){
-      s+= this.getLeft().totringPostfix() + this.getRight().toStringPostfix() + " " + this.getOp();
+      s+= this.getLeft().toStringPostfix() + " " + this.getRight().toStringPostfix() + " " + this.getOp();
     }
     return s;
   }
@@ -32,7 +38,7 @@ public class ExpressionTree{
       s+= this.getValue();
     }
     if (this.isOp()){
-      s+= this.getOp() + " " + this.getLeft().totringPostfix() + this.getRight().toStringPostfix();
+      s+= this.getOp() + " " + this.getLeft().toStringPostfix() +" " +  this.getRight().toStringPostfix();
     }
     return s;
   }
@@ -54,6 +60,18 @@ public class ExpressionTree{
   /*use the correct operator on both a and b, and return that value*/
   private double apply(char op, double a, double b){
     /*you are to write this method*/
+    if (op == '*'){
+      return a * b;
+    }
+    if (op == '/'){
+      return a / b;
+    }
+    if (op == '+'){
+      return a + b;
+    }
+    if (op == '-'){
+      return a - b;
+    }
     return 0.0;
 
     }
